@@ -1,8 +1,15 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :user_params
   before_action :set_user, only: :update
 
   def create
+    @user = User.new(email: user_params[:email], encrypted_password: user_params[:password],
+                     name: user_params[:name])
+    if @user.save
+      render json: @user, status: :created 
+    else
+      render json: @user.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def update
