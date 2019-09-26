@@ -17,9 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: crowdfunding_platform
+  password: <%= ENV['CROWDFUNDING_PLATFORM_DATABASE_PASSWORD'] %>
+  pool: 5
 
 development:
   <<: *default
@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: crowdfunding_platform_production
-  username: crowdfunding_platform
-  password: <%= ENV['CROWDFUNDING_PLATFORM_DATABASE_PASSWORD'] %>
