@@ -1,15 +1,27 @@
 class Api::V1::UsersController < ApplicationController
   before_action :user_params
-  before_action :set_user, only: :update
+  before_action :set_user, only: %i[update sign_in edit]
 
   def create
-    @user = User.new(email: user_params[:email], encrypted_password: user_params[:password],
+    @user = User.new(email: user_params[:email],
                      name: user_params[:name])
+    @user.password = user_params[:password]
     if @user.save
       render json: @user, status: :created 
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def sign_in
+    if @user.password == user_params[:password]
+      render json: @user, status: :ok
+    else
+      render json: ['Wrong email or password']
+    end
+  end
+
+  def edit
   end
 
   def update
