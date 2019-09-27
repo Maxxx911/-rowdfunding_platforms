@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :user_params
-  before_action :set_user, only: %i[update sign_in edit]
+  before_action :set_user_by_email, only: %i[sign_in]
 
   def create
     @user = User.new(email: user_params[:email],
@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password)
   end
 
-  def set_user
+  def set_user_by_email
     @user = User.find_by_email(params[:email])
   end
 end
