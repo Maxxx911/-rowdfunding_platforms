@@ -15,10 +15,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def sign_in
-    if @user.password == user_params[:password]
+    if @user && @user.password == user_params[:password]
       render json: @user, status: :ok
     else
-      render json: {errors: 'Wrong email or password'}
+      render json: {errors: 'Wrong email or password'}, status: :bad_request
     end
   end
 
@@ -44,6 +44,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def set_user_by_email
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(user_params[:email])
   end
 end

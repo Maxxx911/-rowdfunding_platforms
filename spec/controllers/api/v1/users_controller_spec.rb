@@ -34,4 +34,34 @@ RSpec.describe Api::V1::UsersController do
       expect(json_response.keys).to eq(%w[errors])
     end
   end
+
+  describe 'POST sign_in' do
+    it 'valid params' do
+      @user = User.new(email: 'email@a.com', name: 'Max')
+      @user.password = 'password'
+      @user.save
+      post :sign_in, params: {user: {email: 'email@a.com', password: 'password'}}
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[id name email
+                                          encrypted_password created_at updated_at])
+    end
+
+    it 'invalid email' do
+      @user = User.new(email: 'email@a.com', name: 'Max')
+      @user.password = 'password'
+      @user.save
+      post :sign_in, params: {user: {email: 'email12312312@a.com', password: 'password'}}
+      expect(response).to have_http_status(400)
+      expect(json_response.keys).to eq(%w[errors])
+    end
+
+    it 'invalid password' do
+      @user = User.new(email: 'email@a.com', name: 'Max')
+      @user.password = 'password'
+      @user.save
+      post :sign_in, params: {user: {email: 'email@a.com', password: 'password123'}}
+      expect(response).to have_http_status(400)
+      expect(json_response.keys).to eq(%w[errors])
+    end
+  end
 end
