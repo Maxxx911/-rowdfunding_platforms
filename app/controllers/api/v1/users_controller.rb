@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :user_params
+  before_action :user_params, only: %i[create sign_in update]
   before_action :set_user_by_email, only: %i[sign_in]
+  before_action :set_user_by_id, only: %i[edit update]
 
   def create
     @user = User.new(email: user_params[:email],
@@ -9,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: @user, status: :created 
     else
-      render json: @user.errors.full_messages, status: :unprocessable_entity
+      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -17,11 +18,16 @@ class Api::V1::UsersController < ApplicationController
     if @user.password == user_params[:password]
       render json: @user, status: :ok
     else
-      render json: ['Wrong email or password']
+      render json: {errors: 'Wrong email or password'}
     end
   end
 
   def edit
+    if @user.empty?
+      render json: {errors: 'User with this id not found' }, status: :bad_request
+    else
+      render json: @user.first, status: :ok
+    end
   end
 
   def update
@@ -31,6 +37,10 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def set_user_by_id
+    @user = User.where(id: params[:id])
   end
 
   def set_user_by_email
