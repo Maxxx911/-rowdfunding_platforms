@@ -64,4 +64,32 @@ RSpec.describe Api::V1::UsersController do
       expect(json_response.keys).to eq(%w[errors])
     end
   end
+
+  describe 'PATCH update' do
+    it 'valid params' do
+      @user = User.new(email: 'email@a.com', name: 'Max')
+      @user.password = 'password'
+      @user.save
+      patch :update, params: {id: @user.id, user: {name: 'new name'}}
+      expect(response).to have_http_status(200)
+      expect(json_response.first['name']).to eq('new name')
+    end
+
+    it 'invalid params' do
+      patch :update, params: {id: 11111, user: {name: 'new name'}}
+      expect(response).to have_http_status(400)
+      expect(json_response.keys).to eq(%w[errors])
+    end
+
+    it 'update password and email' do
+      @user = User.new(email: 'email@a.com', name: 'Max')
+      @user.password = 'password'
+      @user.save
+      patch :update, params: {id: @user.id, user: {email: 'new email', password: 'new password'}}
+      expect(response).to have_http_status(200)
+      expect(json_response.first['email']).to eq(@user.email)
+      expect(json_response.first['name']).to eq(@user.name)
+      expect(json_response.first['encrypted_password']).to eq(@user.password)
+    end
+  end
 end

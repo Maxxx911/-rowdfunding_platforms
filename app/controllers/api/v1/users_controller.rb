@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :user_params, only: %i[create sign_in update]
+  before_action :user_params, only: %i[create sign_in]
+  before_action :user_params_for_update, only: %i[update]
   before_action :set_user_by_email, only: %i[sign_in]
   before_action :set_user_by_id, only: %i[edit update]
 
@@ -31,9 +32,19 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    if @user.empty?
+      render json: {errors: 'User with this id not found' }, status: :bad_request
+    else
+      @user.update(user_params_for_update)
+      render json: @user, status: :ok
+    end
   end
 
   private
+
+  def user_params_for_update
+    params.require(:user).permit(:name)
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
