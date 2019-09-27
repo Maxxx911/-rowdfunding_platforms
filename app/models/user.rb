@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :name, :encrypted_password, presence: true
   validates :email, uniqueness: true, presence: true
+  has_and_belongs_to_many :projects
 
   def password
     @encrypted_password ||= Password.new(encrypted_password)
