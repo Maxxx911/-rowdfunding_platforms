@@ -3,8 +3,9 @@ require 'bcrypt'
 class User < ApplicationRecord
   include BCrypt
 
-  validates :name, :encrypted_password, presence: true
-  validates :email, uniqueness: true, presence: true
+  validates :first_name, :middle_name, :last_name,
+            :birthday, :encrypted_password, presence: true
+  validates :email, :login, uniqueness: true, presence: true
   has_and_belongs_to_many :projects
 
   def password
@@ -14,5 +15,9 @@ class User < ApplicationRecord
   def password=(new_password)
     @encrypted_password = Password.create(new_password)
     self.encrypted_password = @encrypted_password
+  end
+
+  def token
+    
   end
 end

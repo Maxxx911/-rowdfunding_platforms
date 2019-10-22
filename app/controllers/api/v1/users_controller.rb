@@ -6,12 +6,17 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.new(email: user_params[:email],
-                     name: user_params[:name])
+                     login: user_params[:login],
+                     birthday: user_params[:birthday],
+                     first_name: user_params[:first_name],
+                     middle_name: user_params[:middle_name],
+                     last_name: user_params[:last_name])
     @user.password = user_params[:password]
     if @user.save
-      render json: @user, status: :created 
+      generate_user_token
+      render json: { success: true, errors: {}, result: { token: @user.token } }
     else
-      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+      render json: { success: false, errors: @user.errors.messages, result: {} }
     end
   end
 
@@ -42,12 +47,19 @@ class Api::V1::UsersController < ApplicationController
 
   private
 
+  def generate_user_token
+    @user.token = GenerateTokenService.generate(@user)
+    @user.save!
+  end
+
   def user_params_for_update
     params.require(:user).permit(:name)
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.permit(:login, :email, :password,
+                  :confirm_password, :first_name,
+                  :middle_name, :last_name, :birthday)
   end
 
   def set_user_by_id
