@@ -16,8 +16,4 @@ class User < ApplicationRecord
     @encrypted_password = Password.create(new_password)
     self.encrypted_password = @encrypted_password
   end
-
-  def token
-    
-  end
 end

@@ -10,90 +10,170 @@ RSpec.describe Api::V1::UsersController do
                               first_name: 'Maxim',
                               middle_name: 'Middle name',
                               last_name: 'Last name',
-                              birthday: Date.today}
+                              birthday: Date.today }
       expect(response).to have_http_status(200)
       expect(json_response.keys).to eq(%w[success errors result])
     end
 
     it 'invalid params' do
-      post :create, params: { firs_name: 'Maxim'}
+      post :create, params: { firs_name: 'Maxim' }
       expect(json_response.keys).to eq(%w[success errors result])
-    end
-  end
-
-  describe 'GET edit' do
-    it 'return status 200 and user as json' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
-      @user.password = 'password'
-      @user.save
-      get :edit, params: {id: @user.id}
-      expect(response).to have_http_status(200)
-      expect(json_response.keys).to eq(%w[id name email
-                                          encrypted_password created_at updated_at])
-    end
-
-    it 'return status 400 and error message' do
-      get :edit, params: {id: 1111}
-      expect(response).to have_http_status(400)
-      expect(json_response.keys).to eq(%w[errors])
     end
   end
 
   describe 'POST sign_in' do
-    it 'valid params' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
+    before do
+      @user = User.new( 
+        login: 'Best',
+        email: 'example@email.com',
+        first_name: 'Maxim',
+        middle_name: 'Middle name',
+        last_name: 'Last name',
+        birthday: Date.today
+      )
       @user.password = 'password'
+      @user.token = GenerateTokenService.generate(@user)
       @user.save
-      post :sign_in, params: {user: {email: 'email@a.com', password: 'password'}}
-      expect(response).to have_http_status(200)
-      expect(json_response.keys).to eq(%w[id name email
-                                          encrypted_password created_at updated_at])
     end
 
-    it 'invalid email' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
-      @user.password = 'password'
-      @user.save
-      post :sign_in, params: {user: {email: 'email12312312@a.com', password: 'password'}}
-      expect(response).to have_http_status(400)
-      expect(json_response.keys).to eq(%w[errors])
+    it 'valid params' do
+      post :sign_in, params: { login: @user.login , password: 'password' }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
+      expect(json_response['result']['token']).to eq(@user.token)
+    end
+
+    it 'invalid login' do
+      post :sign_in, params: { login: @user.login + '1', password: 'password' }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).not_to eq(0)
     end
 
     it 'invalid password' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
-      @user.password = 'password'
-      @user.save
-      post :sign_in, params: {user: {email: 'email@a.com', password: 'password123'}}
-      expect(response).to have_http_status(400)
-      expect(json_response.keys).to eq(%w[errors])
+      post :sign_in, params: { login: @user.login, password: 'wrong_password' }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).not_to eq(0)
     end
   end
 
-  describe 'PATCH update' do
+  describe 'PATCH change password' do
+    before do
+      @user = User.new( 
+        login: 'Best',
+        email: 'example@email.com',
+        first_name: 'Maxim',
+        middle_name: 'Middle name',
+        last_name: 'Last name',
+        birthday: Date.today
+      )
+      @user.password = 'password'
+      @user.token = GenerateTokenService.generate(@user)
+      @user.save
+    end
+
     it 'valid params' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
-      @user.password = 'password'
-      @user.save
-      patch :update, params: {id: @user.id, user: {name: 'new name'}}
+      patch :change_password,
+            params: { id: @user.id,
+                      token: @user.token,
+                      password: 'password',
+                      new_password: 'new password',
+                      confirm_new_password: 'new password' }
       expect(response).to have_http_status(200)
-      expect(json_response.first['name']).to eq('new name')
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
     end
 
-    it 'invalid params' do
-      patch :update, params: {id: 11111, user: {name: 'new name'}}
-      expect(response).to have_http_status(400)
-      expect(json_response.keys).to eq(%w[errors])
+    it 'invalid password' do
+      patch :change_password,
+            params: { id: @user.id,
+                      token: @user.token,
+                      password: 'password123',
+                      new_password: 'new password',
+                      confirm_new_password: 'new password' }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).not_to eq(0)
     end
 
-    it 'update password and email' do
-      @user = User.new(email: 'email@a.com', name: 'Max')
-      @user.password = 'password'
-      @user.save
-      patch :update, params: {id: @user.id, user: {email: 'new email', password: 'new password'}}
+    it 'invalid confirm_new_password' do
+      patch :change_password,
+            params: { id: @user.id,
+                      token: @user.token,
+                      password: 'password',
+                      new_password: 'new password',
+                      confirm_new_password: 'new password123' }
       expect(response).to have_http_status(200)
-      expect(json_response.first['email']).to eq(@user.email)
-      expect(json_response.first['name']).to eq(@user.name)
-      expect(json_response.first['encrypted_password']).to eq(@user.password)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).not_to eq(0)
+    end
+  end
+
+  describe 'PATCH update user' do
+    before do
+      @user = User.new( 
+        login: 'Best',
+        email: 'example@email.com',
+        first_name: 'Maxim',
+        middle_name: 'Middle name',
+        last_name: 'Last name',
+        birthday: Date.today
+      )
+      @user.password = 'password'
+      @user.token = GenerateTokenService.generate(@user)
+      @user.save
+    end
+
+    it 'Update first name' do
+      patch :update, params: { id: @user.id,
+                              token: @user.token,
+                              first_name: 'new first name'
+                             }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
+    end
+
+    it 'Update middle name' do
+      patch :update, params: { id: @user.id,
+                               token: @user.token,
+                               middle_name: 'new first name'
+       }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
+    end
+
+    it 'Update last name' do
+      patch :update, params: { id: @user.id,
+                               token: @user.token,
+                               last_name: 'new first name'
+       }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
+    end
+
+    it 'Update birthday' do
+      patch :update, params: { id: @user.id,
+                               token: @user.token,
+                               birthday: Date.today
+       }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
+    end
+
+    it 'Update email' do
+      patch :update, params: { id: @user.id,
+                               token: @user.token,
+                               email: 'new@email.com'
+       }
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
     end
   end
 end
