@@ -1,5 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :project_params, only: %i[create update]
+  before_action :project_params, only: %i[create]
+  before_action :project_params_for_update, only: %i[update]
   before_action :set_project, only: %i[update]
 
   def index
@@ -25,13 +26,13 @@ class Api::V1::ProjectsController < ApplicationController
 
   def update
     if @project
-      if @project.update(project_params)
+      if @project.update(project_params_for_update)
         render json: { success: true, errors: {}, result: {project: @project } }
       else
         render json: { success: false, errors: @project.errors.messages, result: {} }
       end
     else
-      render json: { success: false, errors: { project: "Project with #{params[:id]} not found"}, result: {} }
+      render json: { success: false, errors: { project: "Project with id #{params[:id]} not found"}, result: {} }
     end
   end
 
@@ -43,10 +44,16 @@ class Api::V1::ProjectsController < ApplicationController
   def project_params
     params.permit(:title, :description, :end_time,
                   :sum_goal, :current_sum, :image_url,
-                  :user_token, categories_id: [] )
+                  :user_token, categories_id: [])
+  end
+
+  def project_params_for_update
+    params.permit(:title, :description, :end_time,
+                  :sum_goal, :current_sum, :image_url,
+                  categories_id: [])
   end
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.find_by(id: params[:id], owner: User.find_by(token: params[:user_token]))
   end
 end

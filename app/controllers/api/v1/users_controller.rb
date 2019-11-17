@@ -46,7 +46,7 @@ class Api::V1::UsersController < ApplicationController
         render json: { success: false, errors: @user.errors.messages, result: {} }
       end
     else
-      render json: { success: false, errors: { user: "User with #{params[:id]} not found"}, result: {} }
+      render json: { success: false, errors: { user: "User with id #{params[:id]} not found"}, result: {} }
     end
   end
   

@@ -47,11 +47,19 @@ RSpec.describe Api::V1::ProjectsController do
         owner: @user
       )
     end
+
     it 'Update title' do
-      patch :update, params: { id: @project.id, title: 'new title'}
+      patch :update, params: { id: @project.id, user_token: @user.token, title: 'new title'}
       expect(response).to have_http_status(200)
       expect(json_response.keys).to eq(%w[success errors result])
       expect(json_response['errors'].count).to eq(0)
+    end
+
+    it 'Invalid user token' do
+      patch :update, params: { id: @project.id, user_token: 'invalid token', title: 'new title'}
+      expect(response).to have_http_status(200)
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).not_to eq(0)
     end
   end
 end

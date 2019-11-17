@@ -1706,3 +1706,385 @@ Unpermitted parameter: :id
 [active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.66ms)
 Completed 200 OK in 13ms (Views: 1.5ms | ActiveRecord: 2.4ms)
   [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$ZcPWhut8WJGqkBV.Ciesg.8MB9thBUohBiSbnCmRncTPomfR/9G7a"], ["created_at", "2019-11-17 11:12:10.523391"], ["updated_at", "2019-11-17 11:12:10.523391"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$ZcPWhut8WJGqkBV.Ciesg.8MB9thBUohBiSbnCmRncTPomfR/9G7a"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#create as HTML
+  Parameters: {"categories_id"=>["58", "59", "60"], "current_sum"=>"0", "description"=>"First description", "end_time"=>"2019-12-02", "image_url"=>"https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg", "sum_goal"=>"200", "title"=>"first", "user_token"=>"Best$2a$12$ZcPWhut8WJGqkBV.Ciesg.8MB9thBUohBiSbnCmRncTPomfR/9G7a"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$ZcPWhut8WJGqkBV.Ciesg.8MB9thBUohBiSbnCmRncTPomfR/9G7a"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 58], ["id", 59], ["id", 60]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 22], ["created_at", "2019-11-17 11:12:10.595268"], ["updated_at", "2019-11-17 11:12:10.595268"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 58], ["project_id", 16]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 59], ["project_id", 16]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 60], ["project_id", 16]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 65ms (Views: 4.6ms | ActiveRecord: 6.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$ALNTau2qfyVBHtq1Pl6UN.oi7uKWkA7G/Z.d9A0.TwwOkb7mTW3dS"], ["created_at", "2019-11-17 11:12:10.827403"], ["updated_at", "2019-11-17 11:12:10.827403"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$ALNTau2qfyVBHtq1Pl6UN.oi7uKWkA7G/Z.d9A0.TwwOkb7mTW3dS"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 23], ["created_at", "2019-11-17 11:12:10.833619"], ["updated_at", "2019-11-17 11:12:10.833619"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"Best$2a$12$ALNTau2qfyVBHtq1Pl6UN.oi7uKWkA7G/Z.d9A0.TwwOkb7mTW3dS", "id"=>"17"}
+Unpermitted parameter: :id
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$ALNTau2qfyVBHtq1Pl6UN.oi7uKWkA7G/Z.d9A0.TwwOkb7mTW3dS"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" = $2 LIMIT $3[0m  [["id", 17], ["user_id", 23], ["LIMIT", 1]]
+Unpermitted parameter: :id
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$Mqv4/2UKRQqiyrq.bJFRXuoYc9zZF8IvhbGrmb8nLVLul3lRWgrl2"], ["created_at", "2019-11-17 11:13:44.504227"], ["updated_at", "2019-11-17 11:13:44.504227"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$Mqv4/2UKRQqiyrq.bJFRXuoYc9zZF8IvhbGrmb8nLVLul3lRWgrl2"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#create as HTML
+  Parameters: {"categories_id"=>["64", "65", "66"], "current_sum"=>"0", "description"=>"First description", "end_time"=>"2019-12-02", "image_url"=>"https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg", "sum_goal"=>"200", "title"=>"first", "user_token"=>"Best$2a$12$Mqv4/2UKRQqiyrq.bJFRXuoYc9zZF8IvhbGrmb8nLVLul3lRWgrl2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$Mqv4/2UKRQqiyrq.bJFRXuoYc9zZF8IvhbGrmb8nLVLul3lRWgrl2"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 64], ["id", 65], ["id", 66]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 24], ["created_at", "2019-11-17 11:13:44.575409"], ["updated_at", "2019-11-17 11:13:44.575409"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 64], ["project_id", 18]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 65], ["project_id", 18]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 66], ["project_id", 18]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 65ms (Views: 4.6ms | ActiveRecord: 6.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$bLfULLugP1TxfV8j2gRuq.sMoDr.CamCRCm6OT0MK2VwFYhSm/TTi"], ["created_at", "2019-11-17 11:13:44.821041"], ["updated_at", "2019-11-17 11:13:44.821041"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$bLfULLugP1TxfV8j2gRuq.sMoDr.CamCRCm6OT0MK2VwFYhSm/TTi"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 25], ["created_at", "2019-11-17 11:13:44.828653"], ["updated_at", "2019-11-17 11:13:44.828653"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"Best$2a$12$bLfULLugP1TxfV8j2gRuq.sMoDr.CamCRCm6OT0MK2VwFYhSm/TTi", "id"=>"19"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$bLfULLugP1TxfV8j2gRuq.sMoDr.CamCRCm6OT0MK2VwFYhSm/TTi"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" = $2 LIMIT $3[0m  [["id", 19], ["user_id", 25], ["LIMIT", 1]]
+Unpermitted parameter: :id
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$0pVoMj65fR/JcpXRMAFY1eDmHFCqD/U99/JCUuTHNaR..yWGv3Kbe"], ["created_at", "2019-11-17 11:13:57.512996"], ["updated_at", "2019-11-17 11:13:57.512996"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$0pVoMj65fR/JcpXRMAFY1eDmHFCqD/U99/JCUuTHNaR..yWGv3Kbe"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#create as HTML
+  Parameters: {"categories_id"=>["70", "71", "72"], "current_sum"=>"0", "description"=>"First description", "end_time"=>"2019-12-02", "image_url"=>"https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg", "sum_goal"=>"200", "title"=>"first", "user_token"=>"Best$2a$12$0pVoMj65fR/JcpXRMAFY1eDmHFCqD/U99/JCUuTHNaR..yWGv3Kbe"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$0pVoMj65fR/JcpXRMAFY1eDmHFCqD/U99/JCUuTHNaR..yWGv3Kbe"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 70], ["id", 71], ["id", 72]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 26], ["created_at", "2019-11-17 11:13:57.583124"], ["updated_at", "2019-11-17 11:13:57.583124"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 70], ["project_id", 20]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 71], ["project_id", 20]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 72], ["project_id", 20]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 64ms (Views: 4.5ms | ActiveRecord: 7.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$oOrGwUTj5Zc6n2B7q5JJcuRnd.2F5Eur8m6mmC9zgn8ooSb6kdyiC"], ["created_at", "2019-11-17 11:13:57.815764"], ["updated_at", "2019-11-17 11:13:57.815764"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$oOrGwUTj5Zc6n2B7q5JJcuRnd.2F5Eur8m6mmC9zgn8ooSb6kdyiC"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 27], ["created_at", "2019-11-17 11:13:57.823585"], ["updated_at", "2019-11-17 11:13:57.823585"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"Best$2a$12$oOrGwUTj5Zc6n2B7q5JJcuRnd.2F5Eur8m6mmC9zgn8ooSb6kdyiC", "id"=>"21"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$oOrGwUTj5Zc6n2B7q5JJcuRnd.2F5Eur8m6mmC9zgn8ooSb6kdyiC"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" = $2 LIMIT $3[0m  [["id", 21], ["user_id", 27], ["LIMIT", 1]]
+Unpermitted parameters: :user_token, :id
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mProject Update (0.3ms)[0m  [1m[33mUPDATE "projects" SET "title" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["title", "new title"], ["updated_at", "2019-11-17 11:13:57.829320"], ["id", 21]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$tbbhR8uZlbdw9wEJByqHR.xTD6nY8OXrnLWcG0RKwYV5mIfuEkjuO"], ["created_at", "2019-11-17 11:15:15.419149"], ["updated_at", "2019-11-17 11:15:15.419149"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$tbbhR8uZlbdw9wEJByqHR.xTD6nY8OXrnLWcG0RKwYV5mIfuEkjuO"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#create as HTML
+  Parameters: {"categories_id"=>["76", "77", "78"], "current_sum"=>"0", "description"=>"First description", "end_time"=>"2019-12-02", "image_url"=>"https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg", "sum_goal"=>"200", "title"=>"first", "user_token"=>"Best$2a$12$tbbhR8uZlbdw9wEJByqHR.xTD6nY8OXrnLWcG0RKwYV5mIfuEkjuO"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$tbbhR8uZlbdw9wEJByqHR.xTD6nY8OXrnLWcG0RKwYV5mIfuEkjuO"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 76], ["id", 77], ["id", 78]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 28], ["created_at", "2019-11-17 11:15:15.491091"], ["updated_at", "2019-11-17 11:15:15.491091"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 76], ["project_id", 22]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 77], ["project_id", 22]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 78], ["project_id", 22]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 66ms (Views: 4.6ms | ActiveRecord: 6.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$KPmD2toqukxVBuEVCWAgm.YaIqIM8UVFzypj6HZYEK/rjhbKvO7Bq"], ["created_at", "2019-11-17 11:15:15.723686"], ["updated_at", "2019-11-17 11:15:15.723686"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$KPmD2toqukxVBuEVCWAgm.YaIqIM8UVFzypj6HZYEK/rjhbKvO7Bq"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 29], ["created_at", "2019-11-17 11:15:15.730254"], ["updated_at", "2019-11-17 11:15:15.730254"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"Best$2a$12$KPmD2toqukxVBuEVCWAgm.YaIqIM8UVFzypj6HZYEK/rjhbKvO7Bq", "id"=>"23"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$KPmD2toqukxVBuEVCWAgm.YaIqIM8UVFzypj6HZYEK/rjhbKvO7Bq"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" = $2 LIMIT $3[0m  [["id", 23], ["user_id", 29], ["LIMIT", 1]]
+Unpermitted parameters: :user_token, :id
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mProject Update (0.2ms)[0m  [1m[33mUPDATE "projects" SET "title" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["title", "new title"], ["updated_at", "2019-11-17 11:15:15.736500"], ["id", 23]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$6vo/BQjU7bF.XmK58OCpPOEGpLHx6NzjTJS5jfuETkSVGd1FlvM9e"], ["created_at", "2019-11-17 11:15:15.959694"], ["updated_at", "2019-11-17 11:15:15.959694"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$6vo/BQjU7bF.XmK58OCpPOEGpLHx6NzjTJS5jfuETkSVGd1FlvM9e"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 30], ["created_at", "2019-11-17 11:15:15.966566"], ["updated_at", "2019-11-17 11:15:15.966566"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"invalid token", "id"=>"24"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "invalid token"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" IS NULL LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$TvD20dHz/QgLfN9J0Nu9veUUkEhRRYLb6JicQnPt4cI/UqCrnzkJ2"], ["created_at", "2019-11-17 11:15:28.520357"], ["updated_at", "2019-11-17 11:15:28.520357"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$TvD20dHz/QgLfN9J0Nu9veUUkEhRRYLb6JicQnPt4cI/UqCrnzkJ2"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#create as HTML
+  Parameters: {"categories_id"=>["85", "86", "87"], "current_sum"=>"0", "description"=>"First description", "end_time"=>"2019-12-02", "image_url"=>"https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg", "sum_goal"=>"200", "title"=>"first", "user_token"=>"Best$2a$12$TvD20dHz/QgLfN9J0Nu9veUUkEhRRYLb6JicQnPt4cI/UqCrnzkJ2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$TvD20dHz/QgLfN9J0Nu9veUUkEhRRYLb6JicQnPt4cI/UqCrnzkJ2"], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 85], ["id", 86], ["id", 87]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 31], ["created_at", "2019-11-17 11:15:28.590157"], ["updated_at", "2019-11-17 11:15:28.590157"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 85], ["project_id", 25]]
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 86], ["project_id", 25]]
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 87], ["project_id", 25]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.3ms)
+Completed 200 OK in 64ms (Views: 4.7ms | ActiveRecord: 6.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$1X/QSG2Xu4SL0BnPEW/bv.Y1DtZ8O7djSPJwOCNNEfILC.6SGCfKW"], ["created_at", "2019-11-17 11:15:28.822069"], ["updated_at", "2019-11-17 11:15:28.822069"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$1X/QSG2Xu4SL0BnPEW/bv.Y1DtZ8O7djSPJwOCNNEfILC.6SGCfKW"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 32], ["created_at", "2019-11-17 11:15:28.830359"], ["updated_at", "2019-11-17 11:15:28.830359"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"Best$2a$12$1X/QSG2Xu4SL0BnPEW/bv.Y1DtZ8O7djSPJwOCNNEfILC.6SGCfKW", "id"=>"26"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "Best$2a$12$1X/QSG2Xu4SL0BnPEW/bv.Y1DtZ8O7djSPJwOCNNEfILC.6SGCfKW"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" = $2 LIMIT $3[0m  [["id", 26], ["user_id", 32], ["LIMIT", 1]]
+Unpermitted parameters: :user_token, :id
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mProject Update (0.3ms)[0m  [1m[33mUPDATE "projects" SET "title" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["title", "new title"], ["updated_at", "2019-11-17 11:15:28.835901"], ["id", 26]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$zvWX8I8FuuOF8XCXxe9ZF.7wRppP3azfcyHIC.NMP1kneqgwp3J1e"], ["created_at", "2019-11-17 11:15:29.059608"], ["updated_at", "2019-11-17 11:15:29.059608"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-17 00:00:00"], ["token", "Best$2a$12$zvWX8I8FuuOF8XCXxe9ZF.7wRppP3azfcyHIC.NMP1kneqgwp3J1e"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-02 00:00:00"], ["sum_goal", 200.0], ["user_id", 33], ["created_at", "2019-11-17 11:15:29.066771"], ["updated_at", "2019-11-17 11:15:29.066771"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by Api::V1::ProjectsController#update as HTML
+  Parameters: {"title"=>"new title", "user_token"=>"invalid token", "id"=>"27"}
+Unpermitted parameters: :user_token, :id
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "invalid token"], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 AND "projects"."user_id" IS NULL LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
