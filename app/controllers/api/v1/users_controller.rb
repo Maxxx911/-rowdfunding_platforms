@@ -40,8 +40,11 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     if @user
-      @user.update(user_params_for_update)
-      render json: { success: true, errors: {}, result: { token: @user.token } }
+      if @user.update(user_params_for_update)
+        render json: { success: true, errors: {}, result: { token: @user.token } }
+      else
+        render json: { success: false, errors: @user.errors.messages, result: {} }
+      end
     else
       render json: { success: false, errors: { user: "User with #{params[:id]} not found"}, result: {} }
     end
