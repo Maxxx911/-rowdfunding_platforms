@@ -14,19 +14,24 @@ RSpec.describe Api::V1::ProjectsController do
       @user.password = 'password'
       @user.token = GenerateTokenService.generate(@user)
       @user.save
+      @categories_id = []
+      @categories_id << Category.find_or_create_by(name: 'first').id
+      @categories_id << Category.find_or_create_by(name: 'second').id
+      @categories_id << Category.find_or_create_by(name: 'third').id
     end
 
     it 'valid params' do
-      post :create, params: { token: @user.token
-                              owner_id: @user.id,
+      post :create, params: { user_token: @user.token,
                               title: 'first',
                               description: 'First description',
-                              image_url: 'https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg'
+                              image_url: 'https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg',
                               end_time: Date.today + 15.day,
-                              sum_doal: 200 }}
-      expect(response).to have_http_status(201)
-      expect(json_response.first.project.length).to_not eq(0)
-
+                              sum_goal: 200,
+                              categories_id: @categories_id,
+                              current_sum: 0
+                            }
+      expect(json_response.keys).to eq(%w[success errors result])
+      expect(json_response['errors'].count).to eq(0)
     end
   end
 end

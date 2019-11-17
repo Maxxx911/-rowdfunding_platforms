@@ -46,7 +46,7 @@ class Api::V1::UsersController < ApplicationController
       render json: { success: false, errors: { user: "User with #{params[:id]} not found"}, result: {} }
     end
   end
-
+  
   private
 
   def generate_user_token
