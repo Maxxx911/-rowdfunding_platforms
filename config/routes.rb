@@ -8,7 +8,7 @@ Rails.application.routes.draw do
           patch :change_password
         end
       end
-      resources :projects, only: %i[create update destroy index]
+      resources :projects, only: %i[create update destroy index show]
       resources :payments, only: %i[create]
       resources :comments, only: %i[create update destroy]
       resources :categories, only: %i[create destroy]
