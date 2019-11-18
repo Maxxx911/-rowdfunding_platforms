@@ -2922,3 +2922,67 @@ Processing by Api::V1::ProjectsController#index as HTML
 Completed 200 OK in 13271ms (Views: 0.8ms | ActiveRecord: 17.1ms)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mUser Exists (36.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "example@email.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2[0m  [["login", "Best"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mUser Create (9.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "first_name", "middle_name", "last_name", "login", "birthday", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "example@email.com"], ["encrypted_password", "$2a$12$p2nmTdKbYo7eV3.STHrzNuug7XwqmbcPPlumWuwoSRxVk4RnoyCtu"], ["created_at", "2019-11-18 20:03:08.825236"], ["updated_at", "2019-11-18 20:03:08.825236"], ["first_name", "Maxim"], ["middle_name", "Middle name"], ["last_name", "Last name"], ["login", "Best"], ["birthday", "2019-11-18 00:00:00"], ["token", "Best$2a$12$p2nmTdKbYo7eV3.STHrzNuug7XwqmbcPPlumWuwoSRxVk4RnoyCtu"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (14.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "first"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mCategory Create (73.1ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "first"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (24.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "second"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "second"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (29.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."name" = $1 LIMIT $2[0m  [["name", "third"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "third"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 6], ["id", 7], ["id", 8]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "first"], ["description", "First description"], ["end_time", "2019-12-03 00:00:00"], ["sum_goal", 200.0], ["user_id", 2], ["created_at", "2019-11-18 20:03:09.093752"], ["updated_at", "2019-11-18 20:03:09.093752"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  ↳ db/seeds.rb:26
+  [1m[36mProject::HABTM_Categories Create (0.4ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 6], ["project_id", 8]]
+  ↳ db/seeds.rb:26
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 7], ["project_id", 8]]
+  ↳ db/seeds.rb:26
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 8], ["project_id", 8]]
+  ↳ db/seeds.rb:26
+  [1m[35m (12.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN ($1, $2, $3)[0m  [["id", 6], ["id", 7], ["id", 8]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "end_time", "sum_goal", "user_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Second"], ["description", "Second description"], ["end_time", "2019-12-03 00:00:00"], ["sum_goal", 200.0], ["user_id", 2], ["created_at", "2019-11-18 20:03:09.113521"], ["updated_at", "2019-11-18 20:03:09.113521"], ["image_url", "https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg"]]
+  ↳ db/seeds.rb:37
+  [1m[36mProject::HABTM_Categories Create (0.3ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 6], ["project_id", 9]]
+  ↳ db/seeds.rb:37
+  [1m[36mProject::HABTM_Categories Create (0.2ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 7], ["project_id", 9]]
+  ↳ db/seeds.rb:37
+  [1m[36mProject::HABTM_Categories Create (0.1ms)[0m  [1m[32mINSERT INTO "categories_projects" ("category_id", "project_id") VALUES ($1, $2) RETURNING "id"[0m  [["category_id", 8], ["project_id", 9]]
+  ↳ db/seeds.rb:37
+  [1m[35m (10.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
