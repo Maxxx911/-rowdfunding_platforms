@@ -18,9 +18,7 @@ module Api
           payment = Payment.new(
             title: payment_params[:title],
             description: payment_params[:description],
-            passport_number: payment_params[:passport_number],
             address: payment_params[:address],
-            birthday: payment_params[:birthday],
             payment_method: payment_params[:payment_method],
             project_id: payment_params[:project_id],
             user_id: user.id
@@ -39,8 +37,7 @@ module Api
 
       def payment_params
         params.permit(:token, :title, :description,
-                      :passport_number, :address, :birthday,
-                      :payment_method, :project_id)
+                      :address, :payment_method, :project_id)
       end
     end
   end
