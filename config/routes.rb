@@ -9,9 +9,10 @@ Rails.application.routes.draw do
         end
       end
       resources :projects, only: %i[create update destroy index show]
-      resources :payments, only: %i[create]
+      resources :payments, only: %i[create index]
       resources :comments, only: %i[create update destroy]
       resources :categories, only: %i[create destroy]
+      resources :payment_methods, only: %i[create index]
     end
   end
 end

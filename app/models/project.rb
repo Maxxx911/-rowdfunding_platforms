@@ -6,4 +6,5 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :payments
   has_many :comments
+  has_many :payment_methods
 end

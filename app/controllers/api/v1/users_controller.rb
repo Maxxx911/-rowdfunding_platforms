@@ -71,7 +71,7 @@ module Api
         params.permit(:login, :email, :password,
                       :confirm_password, :first_name,
                       :middle_name, :last_name, :birthday,
-                      :token, :new_password, :confirm_new_password )
+                      :token, :new_password, :confirm_new_password)
       end
 
       def user_params_for_update

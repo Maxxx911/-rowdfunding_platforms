@@ -44,3 +44,12 @@
   owner: @user,
   category_ids: @categories_id
 )
+
+@payment = Payment.create(
+  title: 'First',
+  description: 'First description',
+  address: 'Pushkina st., kolotushkina 28',
+  payment_method: 'paypal', 
+  project_id: @project.id,
+  user_id: @user.id
+)

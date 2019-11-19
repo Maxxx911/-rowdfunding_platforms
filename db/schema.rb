@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_192253) do
+ActiveRecord::Schema.define(version: 2019_11_19_171719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,18 @@ ActiveRecord::Schema.define(version: 2019_11_16_192253) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "client_id", null: false
+    t.string "client_secret", null: false
+    t.string "title", default: "", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_payment_methods_on_project_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.string "title", null: false
-    t.string "desctiption", null: false
-    t.string "passport_number", null: false
-    t.string "address", null: false
-    t.datetime "birthday", null: false
+    t.string "description", null: false
+    t.string "address"
     t.string "payment_method", null: false
     t.bigint "project_id"
     t.bigint "user_id"
