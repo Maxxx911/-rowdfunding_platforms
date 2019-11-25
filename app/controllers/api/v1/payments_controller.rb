@@ -25,7 +25,7 @@ module Api
           )
           if payment.save
             project = Project.find(payment_params[:project_id])
-            project.update(current_sum: project.current_sum + amount.to_i)
+            project.update(current_sum: project.current_sum + payment_params[:amount].to_i)
             render json: { success: true, errors: {}, result: { payment: serialize_resource(payment) } }
           else
             render json: { success: false, errors: payment.errors.messages, result: {} }
