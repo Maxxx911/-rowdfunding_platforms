@@ -24,6 +24,8 @@ module Api
             user_id: user.id
           )
           if payment.save
+            project = Project.find(payment_params[:project_id])
+            project.update(current_sum: project.current_sum + amount.to_i)
             render json: { success: true, errors: {}, result: { payment: serialize_resource(payment) } }
           else
             render json: { success: false, errors: payment.errors.messages, result: {} }
@@ -37,7 +39,7 @@ module Api
 
       def payment_params
         params.permit(:token, :title, :description,
-                      :address, :payment_method, :project_id)
+                      :address, :payment_method, :project_id, :amount)
       end
     end
   end

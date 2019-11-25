@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
              :login, :birthday
   has_many :payments
   has_many :comments
+  has_many :my_projects
 end

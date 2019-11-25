@@ -1,6 +1,6 @@
 class PaymentSerializer < ActiveModel::Serializer
   attributes :id, :title, :description,
-             :address, :payment_method
+             :address, :payment_method, :amount
 
   belongs_to :project,
              class_name: 'Project',
