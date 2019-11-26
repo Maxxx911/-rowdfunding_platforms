@@ -17,6 +17,7 @@ module Api
                                sum_goal: project_params[:sum_goal],
                                current_sum: project_params[:current_sum],
                                image_url: project_params[:image_url],
+                               payment_secret: project_params[:payment_secret],
                                owner: User.find_by(token: project_params[:user_token]),
                                categories: Category.find(project_params[:categories_id]))
         if @project.save
@@ -84,7 +85,7 @@ module Api
       def project_params
         params.permit(:title, :description, :end_time,
                       :sum_goal, :current_sum, :image_url,
-                      :user_token, categories_id: [])
+                      :user_token, :payment_secret, categories_id: [])
       end
 
       def project_params_for_update
