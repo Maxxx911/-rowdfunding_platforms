@@ -18,8 +18,7 @@ module Api
                                current_sum: project_params[:current_sum],
                                image_url: project_params[:image_url],
                                owner: User.find_by(token: project_params[:user_token]),
-                               categories: Category.find(project_params[:categories_id])
-                              )
+                               categories: Category.find(project_params[:categories_id]))
         if @project.save
           render json: { success: true, errors: {}, result: { project: serialize_resource(@project) } }
         else
@@ -95,7 +94,12 @@ module Api
       end
 
       def set_project_with_user_token
-        @project = Project.find_by(id: params[:id], owner: User.find_by(token: params[:user_token]))
+        user = User.find_by(token: params[:user_token])
+        if user && user.role == 'admin'
+          @project = Project.find_by(id: params[:id])
+        else
+          @project = Project.find_by(id: params[:id], owner: user)
+        end
       end
 
       def set_project

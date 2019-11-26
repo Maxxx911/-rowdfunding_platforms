@@ -10,7 +10,8 @@ RSpec.describe Api::V1::UsersController do
                               first_name: 'Maxim',
                               middle_name: 'Middle name',
                               last_name: 'Last name',
-                              birthday: Date.today }
+                              birthday: Date.today,
+                              role: 'admin' }
       expect(response).to have_http_status(200)
       expect(json_response.keys).to eq(%w[success errors result])
     end

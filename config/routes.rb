@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index]
       resources :projects, only: %i[create update destroy index show]
       resources :payments, only: %i[create index]
-      resources :comments, only: %i[create update destroy]
+      resources :comments, only: %i[index create destroy]
       resources :categories, only: %i[create destroy]
       resources :payment_methods, only: %i[create index]
     end

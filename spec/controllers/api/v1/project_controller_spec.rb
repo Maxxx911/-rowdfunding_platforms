@@ -2,13 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ProjectsController do
   before do
-    @user = User.new( 
+    @user = User.new(
       login: 'Best',
       email: 'example@email.com',
       first_name: 'Maxim',
       middle_name: 'Middle name',
       last_name: 'Last name',
-      birthday: Date.today
+      birthday: Date.today,
+      role: 'admin'
     )
     @user.password = 'password'
     @user.token = GenerateTokenService.generate(@user)
@@ -18,8 +19,8 @@ RSpec.describe Api::V1::ProjectsController do
     @categories_id << Category.find_or_create_by(name: 'first').id
     @categories_id << Category.find_or_create_by(name: 'second').id
     @categories_id << Category.find_or_create_by(name: 'third').id
-  
-    @project = Project.create( 
+
+    @project = Project.create(
       title: 'first',
       description: 'First description',
       image_url: 'https://riafan.ru/uploads/2018/05/12/orig-1526128107315bc0def6e8cdb0d4c0bf3b0a0ab23c.jpeg',
@@ -39,8 +40,7 @@ RSpec.describe Api::V1::ProjectsController do
                               end_time: Date.today + 15.day,
                               sum_goal: 200,
                               categories_id: @categories_id,
-                              current_sum: 0
-                            }
+                              current_sum: 0 }
       expect(json_response.keys).to eq(%w[success errors result])
       expect(json_response['errors'].count).to eq(0)
     end

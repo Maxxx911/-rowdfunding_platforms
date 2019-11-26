@@ -4,7 +4,7 @@ module Api
       def index
         @categories = Category.all
         if @categories
-          render json: { success: true, errors: {}, result: { payments: serialize_resource(@categories) } }
+          render json: { success: true, errors: {}, result: { categories: serialize_resource(@categories) } }
         else
           render json: { success: false, errors: @categories.errors.messages, result: {} }
         end
