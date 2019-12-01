@@ -5,7 +5,7 @@ module Api
       before_action :user_params_for_update, only: %i[update]
       before_action :set_user_by_login, only: %i[sign_in]
       before_action :set_user_by_id, only: %i[change_password update]
-      before_action :set_user_by_token, only: %i[show]
+      before_action :set_user_by_token, only: %i[profile]
 
       def create
         @user = User.new(email: user_params[:email],
@@ -53,7 +53,7 @@ module Api
         end
       end
 
-      def show
+      def profile
         if @user
           render json: { success: true, errors: {}, result: serialize_resource(@user) }
         else
@@ -97,7 +97,7 @@ module Api
       end
 
       def set_user_by_token
-        @user = User.find_by(token: params[:id])
+        @user = User.find_by(token: params[:user_token])
       end
     end
   end

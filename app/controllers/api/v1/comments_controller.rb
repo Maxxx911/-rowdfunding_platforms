@@ -56,7 +56,7 @@ module Api
       end
 
       def set_comment
-        @comment = Comment.find_by(project_id: params[:project_id])
+        @comment = Comment.where(project_id: params[:project_id])
       end
     end
   end
