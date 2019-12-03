@@ -8032,3 +8032,716 @@ Unpermitted parameter: :user
 Completed 200 OK in 243ms (Views: 4.7ms | ActiveRecord: 4.6ms)
 
 
+Started GET "/api/v1/projects" for ::1 at 2019-12-03 19:05:09 +0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/maxim/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ProjectsController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.9ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 4]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 4]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 4]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 5]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 5]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 5]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 6]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 6]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 6]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 8]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 8]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.8ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 8]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 9]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 9]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 9]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 10]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 10]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 10]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 11]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 11]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 11]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 12]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (2.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 12]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 12]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 13]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 13]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 13]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 14]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 14]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 14]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 15]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 15]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 15]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 16]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 16]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.4ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 16]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 17]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 17]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 17]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 18]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 18]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 18]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 19]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 19]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 19]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 20]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 20]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 20]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 21]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 21]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 21]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (627.97ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.79ms)
+Completed 200 OK in 824ms (Views: 10.9ms | ActiveRecord: 82.8ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2019-12-03 19:05:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.6) lib/rack/cors.rb:98:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/v1/projects?categories_id=[1]" for ::1 at 2019-12-03 19:05:15 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[1]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.6ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (1.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.23ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.53ms)
+Completed 200 OK in 67ms (Views: 1.0ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/api/v1/projects?categories_id=[1,%202]" for ::1 at 2019-12-03 19:05:28 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[1, 2]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.7ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.72ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.26ms)
+Completed 200 OK in 89ms (Views: 2.0ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/api/v1/projects?categories_id=[1,%202]" for ::1 at 2019-12-03 19:05:43 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[1, 2]"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (25.3ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.42ms)
+Completed 200 OK in 68ms (Views: 0.9ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/api/v1/projects?categories_id=[2]" for ::1 at 2019-12-03 19:06:04 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[2]"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.04ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/v1/projects?categories_id=[3]" for ::1 at 2019-12-03 19:06:08 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[3]"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (1.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 2]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 3]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.02ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.22ms)
+Completed 200 OK in 87ms (Views: 3.1ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/projects?categories_id=[4]" for ::1 at 2019-12-03 19:06:13 +0300
+Processing by Api::V1::ProjectsController#index as HTML
+  Parameters: {"categories_id"=>"[4]"}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:77
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 3]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 4]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 5]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 6]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 8]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 9]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 10]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 11]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 12]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 13]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 14]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 15]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 16]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 17]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 18]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 19]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 20]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "categories"."id" FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 21]]
+  ↳ app/controllers/api/v1/projects_controller.rb:78
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/projects_controller.rb:65
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "projects_users" ON "users"."id" = "projects_users"."user_id" WHERE "projects_users"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" INNER JOIN "categories_projects" ON "categories"."id" = "categories_projects"."category_id" WHERE "categories_projects"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."project_id" = $1[0m  [["project_id", 7]]
+[active_model_serializers]   ↳ app/controllers/application_controller.rb:3
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (27.44ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 200 OK in 76ms (Views: 0.9ms | ActiveRecord: 15.6ms)
+
+

@@ -21,6 +21,7 @@ module Api
             address: payment_params[:address],
             payment_method: payment_params[:payment_method],
             project_id: payment_params[:project_id],
+            amount: payment_params[:amount],
             user_id: user.id
           )
           if payment.save
