@@ -16,7 +16,7 @@ module Api
         user = User.find_by(token: params[:user_token])
         project = Project.find(comment_params[:project_id])
         if user && project
-          @comment = Comment.new(text: comment_params[:text], user_id: user.id, project_id: project.id, created_at: Date.today)
+          @comment = Comment.new(text: comment_params[:text], user_id: user.id, project_id: project.id, created_at: DateTime.now)
           if @comment.save
             render json: { success: true, errors: {}, result: { comments: serialize_resource(@comment) } }
           else
