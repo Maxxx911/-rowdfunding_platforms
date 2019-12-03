@@ -17,7 +17,7 @@ module Api
         @user.password = user_params[:password]
         if @user.save
           generate_user_token
-          render json: { success: true, errors: {}, result: { token: @user.token } }
+          render json: { success: true, errors: {}, result: { user: @user } }
         else
           render json: { success: false, errors: @user.errors.messages, result: {} }
         end
