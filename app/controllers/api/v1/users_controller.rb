@@ -25,7 +25,7 @@ module Api
 
       def sign_in
         if @user && valid_password?
-          render json: { success: true, errors: {}, result: { token: @user.token } }
+          render json: { success: true, errors: {}, result: { user: @user } }
         else
           render json: { success: false, errors: { authorization: 'Wrong login or password'}, result: {} }
         end
